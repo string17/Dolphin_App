@@ -1,15 +1,15 @@
-(function($) {
+(function ($) {
   'use strict';
-  $(function() {
-    $(".nav-settings").click(function() {
+  $(function () {
+    $(".nav-settings").on("click", function () {
       $("#theme-settings").removeClass("open");
       $("#right-sidebar").toggleClass("open");
     });
-    $(".settings-close").click(function() {
+    $(".settings-close").on("click", function () {
       $("#right-sidebar,#theme-settings").removeClass("open");
     });
 
-    $(".navbar-nav .nav-item.color-setting").on("click", function() {
+    $(".navbar-nav .nav-item.color-setting").on("click", function () {
       $("#right-sidebar").removeClass("open");
       $("#theme-settings").toggleClass("open");
     });
@@ -21,13 +21,13 @@
     var $body = $("body");
 
     //sidebar backgrounds
-    $("#sidebar-light-theme").on("click", function() {
+    $("#sidebar-light-theme").on("click", function () {
       $body.removeClass(sidebar_classes);
       $body.addClass("sidebar-light");
       $(".sidebar-bg-options").removeClass("selected");
       $(this).addClass("selected");
     });
-    $("#sidebar-dark-theme").on("click", function() {
+    $("#sidebar-dark-theme").on("click", function () {
       $body.removeClass(sidebar_classes);
       $body.addClass("sidebar-dark");
       $(".sidebar-bg-options").removeClass("selected");
@@ -36,49 +36,49 @@
 
 
     //Navbar Backgrounds
-    $(".tiles.primary").on("click", function() {
+    $(".tiles.primary").on("click", function () {
       $(".navbar").removeClass(navbar_classes);
       $(".navbar").addClass("navbar-primary");
       $(".tiles").removeClass("selected");
       $(this).addClass("selected");
     });
-    $(".tiles.success").on("click", function() {
+    $(".tiles.success").on("click", function () {
       $(".navbar").removeClass(navbar_classes);
       $(".navbar").addClass("navbar-success");
       $(".tiles").removeClass("selected");
       $(this).addClass("selected");
     });
-    $(".tiles.warning").on("click", function() {
+    $(".tiles.warning").on("click", function () {
       $(".navbar").removeClass(navbar_classes);
       $(".navbar").addClass("navbar-warning");
       $(".tiles").removeClass("selected");
       $(this).addClass("selected");
     });
-    $(".tiles.danger").on("click", function() {
+    $(".tiles.danger").on("click", function () {
       $(".navbar").removeClass(navbar_classes);
       $(".navbar").addClass("navbar-danger");
       $(".tiles").removeClass("selected");
       $(this).addClass("selected");
     });
-    $(".tiles.pink").on("click", function() {
+    $(".tiles.pink").on("click", function () {
       $(".navbar").removeClass(navbar_classes);
       $(".navbar").addClass("navbar-pink");
       $(".tiles").removeClass("selected");
       $(this).addClass("selected");
     });
-    $(".tiles.info").on("click", function() {
+    $(".tiles.info").on("click", function () {
       $(".navbar").removeClass(navbar_classes);
       $(".navbar").addClass("navbar-info");
       $(".tiles").removeClass("selected");
       $(this).addClass("selected");
     });
-    $(".tiles.dark").on("click", function() {
+    $(".tiles.dark").on("click", function () {
       $(".navbar").removeClass(navbar_classes);
       $(".navbar").addClass("navbar-dark");
       $(".tiles").removeClass("selected");
       $(this).addClass("selected");
     });
-    $(".tiles.default").on("click", function() {
+    $(".tiles.default").on("click", function () {
       $(".navbar").removeClass(navbar_classes);
       $(".tiles").removeClass("selected");
       $(this).addClass("selected");

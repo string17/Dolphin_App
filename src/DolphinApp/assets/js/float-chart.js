@@ -1,4 +1,4 @@
-(function($) {
+(function ($) {
   'use strict';
   var data = [{
       data: 18000,
@@ -195,7 +195,7 @@
       Tooltips for Flot Charts
   ---------------------------------*/
   if ($(".flot-chart-line").length) {
-    $(".flot-chart-line").bind("plothover", function(event, pos, item) {
+    $(".flot-chart-line").on("bind", "plothover", function (event, pos, item) {
       if (item) {
         var x = item.datapoint[0].toFixed(2),
           y = item.datapoint[1].toFixed(2);
@@ -329,7 +329,7 @@
    ----- COLUMN CHART -----
    ---------------------*/
 
-  $(function() {
+  $(function () {
 
     var data = [
       ["January", 10],
@@ -372,7 +372,7 @@
    ----- STACKED CHART -----
    --------------------------------*/
 
-  $(function() {
+  $(function () {
 
     var d1 = [];
     for (var i = 0; i <= 10; i += 1) {
@@ -418,7 +418,7 @@
   /*--------------------------------
    ----- REALTIME CHART -----
    --------------------------------*/
-  $(function() {
+  $(function () {
 
     // We use an inline data source in the example, usually data would
     // be fetched from a server
@@ -500,7 +500,7 @@
    ----- CURVED LINE CHART -----
    --------------------------------*/
 
-  $(function() {
+  $(function () {
 
     var d1 = [
       [0, 6],

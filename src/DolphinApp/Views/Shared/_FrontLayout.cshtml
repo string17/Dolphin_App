@@ -7,15 +7,16 @@
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
     <title>Dolphin</title>
     <!-- plugins:css -->
-    <link rel="stylesheet" href="../assets/vendors/iconfonts/mdi/css/materialdesignicons.min.css">
-    <link rel="stylesheet" href="../assets/vendors/iconfonts/puse-icons-feather/feather.css">
-    <link rel="stylesheet" href="../assets/vendors/css/vendor.bundle.base.css">
-    <link rel="stylesheet" href="../assets/vendors/css/vendor.bundle.addons.css">
+    <link rel="stylesheet" href="~/assets/vendors/iconfonts/mdi/css/materialdesignicons.min.css">
+    <link rel="stylesheet" href="~/assets/vendors/iconfonts/flag-icon-css/css/flag-icon.min.css">
+    <link rel="stylesheet" href="~/assets/vendors/iconfonts/simple-line-icon/css/simple-line-icons.css">
+    <link rel="stylesheet" href="~/assets/vendors/css/vendor.bundle.base.css">
+    <link rel="stylesheet" href="~/assets/vendors/css/vendor.bundle.addons.css">
     <!-- endinject -->
     <!-- plugin css for this page -->
     <!-- End plugin css for this page -->
     <!-- inject:css -->
-    <link rel="stylesheet" href="../assets/css/style2.css">
+    <link rel="stylesheet" href="../assets/css/style.css">
     <!-- endinject -->
     <link rel="shortcut icon" href="~/assets/images/icon-s.jpg" />
 
@@ -39,30 +40,27 @@
 <body>
     <div class="container-scroller">
         <div class="container-fluid page-body-wrapper full-page-wrapper">
-         
-
             @RenderBody()
-            <!-- content-wrapper ends -->
 
 
-            <div class="col-md-12 col-sm-6 grid-margin stretch-card" id="myLoader" style="minWidth:100%;max-width:100%;">
-             
-                                            @*<div class="flip-square-loader mx-auto" style="margin-top:170px;"></div>*@
-                <div class="bar-loader" style="margin-top:170px;">
+
+            <div class="col-md-12 col-sm-6 grid-margin stretch-card" id="myLoader" style="Width:100%;max-width:100%;">
+                <div class="bar-loader">
                     <span></span>
                     <span></span>
                     <span></span>
                     <span></span>
+
                 </div>
-                                      
-                                    </div>
-                    </div>
-                    <!-- page-body-wrapper ends -->
-                </div>
+
+            </div>
+            <!-- page-body-wrapper ends -->
+        </div>
+        </div>
                 <!-- container-scroller -->
     <!-- container-scroller -->
     <!-- plugins:js -->
-    <script src="//ajax.googleapis.com/ajax/libs/jquery/1.11.0/jquery.min.js"></script>
+    @*<script src="//ajax.googleapis.com/ajax/libs/jquery/1.11.0/jquery.min.js"></script>*@
     <script src="../assets/vendors/js/vendor.bundle.base.js"></script>
     <script src="../assets/vendors/js/vendor.bundle.addons.js"></script>
     <!-- endinject -->

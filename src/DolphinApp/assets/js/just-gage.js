@@ -1,6 +1,6 @@
 var g1, g2, gg1, g7, g8, g9, g10;
 
-window.onload = function() {
+$(window).on("load", function () {
   var g1 = new JustGage({
     id: "g1",
     value: getRandomInt(0, 100),
@@ -11,15 +11,15 @@ window.onload = function() {
   });
 
 
-  setInterval(function() {
+  setInterval(function () {
     g1.refresh(getRandomInt(50, 100));
   }, 2500);
-};
+});
 
 
 
 
-document.addEventListener("DOMContentLoaded", function(event) {
+document.addEventListener("DOMContentLoaded", function (event) {
   g2 = new JustGage({
     id: "g2",
     value: 72,
@@ -31,7 +31,7 @@ document.addEventListener("DOMContentLoaded", function(event) {
     hideInnerShadow: true
   });
 
-  document.getElementById('g2_refresh').addEventListener('click', function() {
+  document.getElementById('g2_refresh').addEventListener('click', function () {
     g2.refresh(getRandomInt(0, 100));
   });
 
@@ -179,7 +179,7 @@ document.addEventListener("DOMContentLoaded", function(event) {
     counter: true
   });
 
-  document.getElementById('gauge_refresh').addEventListener('click', function() {
+  document.getElementById('gauge_refresh').addEventListener('click', function () {
     g3.refresh(getRandomInt(0, 100));
     g4.refresh(getRandomInt(0, 100));
     g5.refresh(getRandomInt(0, 100));

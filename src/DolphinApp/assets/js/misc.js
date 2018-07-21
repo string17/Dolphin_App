@@ -1,6 +1,6 @@
-(function($) {
+(function ($) {
   'use strict';
-  $(function() {
+  $(function () {
     var body = $('body');
     var contentWrapper = $('.content-wrapper');
     var scroller = $('.container-scroller');
@@ -10,14 +10,13 @@
     //Add active class to nav-link based on url dynamically
     //Active class can be hard coded directly in html file also as required
     var current = location.pathname.split("/").slice(-1)[0].replace(/^\/|\/$/g, '');
-    $('.nav li a', sidebar).each(function() {
+    $('.nav li a', sidebar).each(function () {
       var $this = $(this);
       if (current === "") {
         //for root url
         if ($this.attr('href').indexOf("index.html") !== -1) {
           $(this).parents('.nav-item').last().addClass('active');
           if ($(this).parents('.sub-menu').length) {
-            $(this).closest('.collapse').addClass('show');
             $(this).addClass('active');
           }
         }
@@ -26,8 +25,13 @@
         if ($this.attr('href').indexOf(current) !== -1) {
           $(this).parents('.nav-item').last().addClass('active');
           if ($(this).parents('.sub-menu').length) {
-            $(this).closest('.collapse').addClass('show');
             $(this).addClass('active');
+          }
+          if (current !== "index.html") {
+            $(this).parents('.nav-item').last().find(".nav-link").attr("aria-expanded", "true");
+            if ($(this).parents('.sub-menu').length) {
+              $(this).closest('.collapse').addClass('show');
+            }
           }
         }
       }
@@ -35,7 +39,7 @@
 
     //Close other submenu in sidebar on opening any
 
-    sidebar.on('show.bs.collapse', '.collapse', function() {
+    sidebar.on('show.bs.collapse', '.collapse', function () {
       sidebar.find('.collapse.show').collapse('hide');
     });
 
@@ -56,12 +60,12 @@
           const ScrollContainer = new PerfectScrollbar('.scroll-container');
         }
         if (body.hasClass("sidebar-fixed")) {
-          var fixedSidebarScroll = new PerfectScrollbar('#sidebar .nav');
+          const fixedSidebarScroll = new PerfectScrollbar('#sidebar .nav');
         }
       }
     }
 
-    $('[data-toggle="minimize"]').on("click", function() {
+    $('[data-toggle="minimize"]').on("click", function () {
       if ((body.hasClass('sidebar-toggle-display')) || (body.hasClass('sidebar-absolute'))) {
         body.toggleClass('sidebar-hidden');
       } else {
@@ -70,7 +74,7 @@
     });
 
     //checkbox and radios
-    $(".form-check .form-check-label,.form-radio .form-check-label").not(".todo-form-check .form-check-label").append('<i class="input-helper"></i>');
+    $(".form-check label,.form-radio label").append('<i class="input-helper"></i>');
 
   });
 })(jQuery);

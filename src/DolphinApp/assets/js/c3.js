@@ -1,4 +1,4 @@
-(function($) {
+(function ($) {
   'use strict';
   var c3LineChart = c3.generate({
     bindto: '#c3-line-chart',
@@ -19,27 +19,21 @@
     }
   });
 
-  setTimeout(function() {
-    c3LineChart.load({
+  setTimeout(function () {
+    c3LineChart.on("onload", {
       columns: [
         ['data1', 230, 190, 300, 500, 300, 400]
       ]
     });
   }, 1000);
 
-  setTimeout(function() {
-    c3LineChart.load({
+  setTimeout(function () {
+    c3LineChart.on("onload", {
       columns: [
         ['data3', 130, 150, 200, 300, 200, 100]
       ]
     });
   }, 1500);
-
-  setTimeout(function() {
-    c3LineChart.unload({
-      ids: 'data1'
-    });
-  }, 2000);
 
   var c3SplineChart = c3.generate({
     bindto: '#c3-spline-chart',
@@ -85,8 +79,8 @@
     }
   });
 
-  setTimeout(function() {
-    c3BarChart.load({
+  setTimeout(function () {
+    c3BarChart.on("onload", {
       columns: [
         ['data3', 130, -150, 200, 300, -200, 100]
       ]
@@ -124,13 +118,13 @@
         ['data2', 120],
       ],
       type: 'pie',
-      onclick: function(d, i) {
+      onclick: function (d, i) {
         console.log("onclick", d, i);
       },
-      onmouseover: function(d, i) {
+      onmouseover: function (d, i) {
         console.log("onmouseover", d, i);
       },
-      onmouseout: function(d, i) {
+      onmouseout: function (d, i) {
         console.log("onmouseout", d, i);
       }
     },
@@ -145,8 +139,8 @@
     }
   });
 
-  setTimeout(function() {
-    c3PieChart.load({
+  setTimeout(function () {
+    c3PieChart.on("onload", {
       columns: [
         ["Income", 0.2, 0.2, 0.2, 0.2, 0.2, 0.4, 0.3, 0.2, 0.2, 0.1, 0.2, 0.2, 0.1, 0.1, 0.2, 0.4, 0.4, 0.3, 0.3, 0.3, 0.2, 0.4, 0.2, 0.5, 0.2, 0.2, 0.4, 0.2, 0.2, 0.2, 0.2, 0.4, 0.1, 0.2, 0.2, 0.2, 0.2, 0.1, 0.2, 0.2, 0.3, 0.3, 0.2, 0.6, 0.4, 0.3, 0.2, 0.2, 0.2, 0.2],
         ["Outcome", 1.4, 1.5, 1.5, 1.3, 1.5, 1.3, 1.6, 1.0, 1.3, 1.4, 1.0, 1.5, 1.0, 1.4, 1.3, 1.4, 1.5, 1.0, 1.5, 1.1, 1.8, 1.3, 1.5, 1.2, 1.3, 1.4, 1.4, 1.7, 1.5, 1.0, 1.1, 1.0, 1.2, 1.6, 1.5, 1.6, 1.5, 1.3, 1.3, 1.3, 1.2, 1.4, 1.2, 1.0, 1.3, 1.2, 1.3, 1.3, 1.1, 1.3],
@@ -154,15 +148,6 @@
       ]
     });
   }, 1500);
-
-  setTimeout(function() {
-    c3PieChart.unload({
-      ids: 'data1'
-    });
-    c3PieChart.unload({
-      ids: 'data2'
-    });
-  }, 2500);
   var c3DonutChart = c3.generate({
     bindto: '#c3-donut-chart',
     data: {
@@ -171,13 +156,13 @@
         ['data2', 120],
       ],
       type: 'donut',
-      onclick: function(d, i) {
+      onclick: function (d, i) {
         console.log("onclick", d, i);
       },
-      onmouseover: function(d, i) {
+      onmouseover: function (d, i) {
         console.log("onmouseover", d, i);
       },
-      onmouseout: function(d, i) {
+      onmouseout: function (d, i) {
         console.log("onmouseout", d, i);
       }
     },
@@ -195,8 +180,8 @@
     }
   });
 
-  setTimeout(function() {
-    c3DonutChart.load({
+  setTimeout(function () {
+    c3DonutChart.on("onload", {
       columns: [
         ["setosa", 0.2, 0.2, 0.2, 0.2, 0.2, 0.4, 0.3, 0.2, 0.2, 0.1, 0.2, 0.2, 0.1, 0.1, 0.2, 0.4, 0.4, 0.3, 0.3, 0.3, 0.2, 0.4, 0.2, 0.5, 0.2, 0.2, 0.4, 0.2, 0.2, 0.2, 0.2, 0.4, 0.1, 0.2, 0.2, 0.2, 0.2, 0.1, 0.2, 0.2, 0.3, 0.3, 0.2, 0.6, 0.4, 0.3, 0.2, 0.2, 0.2, 0.2],
         ["versicolor", 1.4, 1.5, 1.5, 1.3, 1.5, 1.3, 1.6, 1.0, 1.3, 1.4, 1.0, 1.5, 1.0, 1.4, 1.3, 1.4, 1.5, 1.0, 1.5, 1.1, 1.8, 1.3, 1.5, 1.2, 1.3, 1.4, 1.4, 1.7, 1.5, 1.0, 1.1, 1.0, 1.2, 1.6, 1.5, 1.6, 1.5, 1.3, 1.3, 1.3, 1.2, 1.4, 1.2, 1.0, 1.3, 1.2, 1.3, 1.3, 1.1, 1.3],
@@ -204,15 +189,4 @@
       ]
     });
   }, 1500);
-
-  setTimeout(function() {
-    c3DonutChart.unload({
-      ids: 'data1'
-    });
-    c3DonutChart.unload({
-      ids: 'data2'
-    });
-  }, 2500);
-
-
 })(jQuery);

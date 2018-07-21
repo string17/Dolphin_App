@@ -83,7 +83,7 @@ function drawStuff() {
 
 
 // Histogram Charts Starts
-(function($) {
+(function ($) {
 
   google.charts.load("current", {
     packages: ["corechart"]
@@ -125,7 +125,7 @@ function drawStuff() {
 
 
 // Area Chart Starts
-(function($) {
+(function ($) {
 
   google.charts.load('current', {
     'packages': ['corechart']
@@ -202,7 +202,7 @@ function drawChart() {
 
 
 // Curve Chart Starts
-(function($) {
+(function ($) {
 
   google.charts.load('current', {
     'packages': ['corechart']

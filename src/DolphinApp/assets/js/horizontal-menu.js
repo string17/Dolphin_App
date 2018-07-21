@@ -1,6 +1,6 @@
 // For horizontal menu 1
-$(".horizontal-menu .navbar.horizontal-layout .navbar-menu-wrapper .navbar-toggler").on("click", function() {
-  $(".horizontal-menu .navbar.horizontal-layout .nav-bottom").toggleClass("d-block");
+$(".navbar.horizontal-layout .navbar-menu-wrapper .navbar-toggler").on("click", function() {
+  $(".navbar.horizontal-layout").toggleClass("header-toggled");
 });
 
 // For horizontal menu 2

@@ -64,6 +64,17 @@ $(function() {
       yAxes: [{
         ticks: {
           beginAtZero: true
+        },
+        gridLines: {
+          display: false
+        }
+      }],
+      xAxes: [{
+        ticks: {
+          beginAtZero: true
+        },
+        gridLines: {
+          display: false
         }
       }]
     },
