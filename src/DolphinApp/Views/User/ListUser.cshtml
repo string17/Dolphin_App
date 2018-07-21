@@ -1,0 +1,184 @@
+﻿@{
+    DolphinService.Response.UserDetailsResponse Model_Users = ViewBag.Users;
+    //BLL.ApplicationLogic.UserManagement usermgt = new BLL.ApplicationLogic.UserManagement();
+
+    int sn = 0;
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+
+@{if (!String.IsNullOrEmpty(ViewBag.SuccessMsg))
+    {
+        <div class="alert alert-success" role="alert" style="margin:auto;width:100%;">
+            @ViewBag.SuccessMsg
+            <button type="button" class="close" data-dismiss="alert" aria-hidden="true">&times;</button>
+        </div>
+    }
+}
+<div class="card">
+    <div class="card-body">
+        <h4 class="card-title">@ViewBag.Message</h4>
+        <div class="row">
+            <div class="col-12">
+                <table id="order-listing" class="table">
+                    <thead>
+                        <tr>
+                            <th>S/N #</th>
+                            <th>Name</th>
+                            <th>Username</th>
+                            @*<th>Email</th>*@
+                            @*<th>Phone No</th>*@
+                            <th>Image</th>
+                            <th>Role</th>
+                            <th>Company</th>
+                            <th>Status</th>
+                            <th>Actions</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+
+                        @foreach (var n in Model_Users.UserDetails)
+                        {
+
+                            sn += 1;
+                            <tr>
+                                <td>@sn</td>
+                                <td>@n.FirstName @n.MiddleName @n.LastName</td>
+                                <td>@n.UserName</td>
+                                @*<td>@n.Email</td>*@
+                                @*<td>@n.PhoneNo</td>*@
+                                <td> <img src="~/assets/UserImg/@n.UserImg" style="height:30px;width:50px;"></td>
+                                <td>@n.RoleName</td>
+                                <td>@n.ClientAlias</td>
+                                <td><label class="badge badge-success">@(Convert.ToBoolean(n.IsUserActive) ? "Active" : "Inactive")</label></td>
+                                <td class="noExl">
+                                    @*<a data-toggle="modal" onclick="showAccountdetails(this.id);" id="@n.RoleId">Details</a>*@
+                                    <div class="dropdown">
+                                        <button class="btn btn-outline-primary dropdown-toggle" type="button" id="dropdownMenuOutlineButton1" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+
+                                            Action
+                                        </button>
+                                        <div class="dropdown-menu" aria-labelledby="dropdownMenuButton1">
+                                            @*<a class="dropdown-item" href="#" data-toggle="modal" data-target="#userdetails">Details</a>*@
+                                            <a class="dropdown-item" data-toggle="modal" onclick="showdetails(this.id);" id="@n.UserId">Details</a>
+                                            @*<li><a data-toggle="modal" onclick="showAccountdetails(this.id);" id="@n.CustomerId">Details</a></li>*@
+                                            <div class="dropdown-divider"></div>
+                                            <a class="dropdown-item" href="@Url.Action("ModifyUser", new { UserId = @n.UserId })" id="PageLoad">Edit</a>
+                                        </div>
+                                    </div>
+                                </td>
+
+
+                            </tr>
+
+                        }
+
+                    </tbody>
+                </table>
+            </div>
+        </div>
+    </div>
+</div>
+
+
+<!-- Modal starts -->
+@*<div class="text-center">
+        <button type="button" class="btn btn-primary btn-sm" data-toggle="modal" data-target="#exampleModal-2">Click for demo<i class="mdi mdi-play-circle ml-1"></i></button>
+    </div>*@
+<div class="modal fade" id="userdetails" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel-2" data-backdrop="static" aria-hidden="true">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h6 class="modal-title" id="exampleModalLabel-2">@ViewBag.Message</h6>
+                @*<button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                        <span aria-hidden="true">&times;</span>
+                    </button>*@
+            </div>
+            <div class="modal-body">
+                <div class="col-md-12">
+                    <table class="table">
+                        <tbody>
+                            <tr>
+                                <th>Full Name</th>
+                                <th><label id="fullname"></label></th>
+                            </tr>
+                            <tr>
+                                <th>Company</th>
+                                <th><label id="company"></label></th>
+                            </tr>
+                            <tr>
+                                <th>Phone Number</th>
+                                <th><label id="phoneno"></label></th>
+                            </tr>
+                            <tr>
+                                <th>Role</th>
+                                <th><label id="role"></label></th>
+                            </tr>
+                            <tr>
+                                <th>Sex</th>
+                                <th><label id="sex"></label></th>
+                            </tr>
+                            <tr>
+                                <th>Username</th>
+                                <th><label id="username"></label></th>
+                            </tr>
+                            <tr>
+                                <th>Email</th>
+                                <th><label id="email"></label></th>
+                            </tr>
+                            <tr>
+                                <th>User Status</th>
+                                <th><label id="status"></label></th>
+                            </tr>
+                       
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-danger" data-dismiss="modal">Cancel</button>
+            </div>
+        </div>
+    </div>
+</div>
+<!-- Modal Ends -->
+
+
+<script type="text/javascript">
+    function showdetails(UserId) {
+        //alert("Good");
+        //$("#myLoader").show();
+        var url = "/User/GetUserDetails?UserId=" + UserId;
+        $.get(url, { user: UserId }, function (data) {
+
+            var out;
+            $('#fullname').html(data.UserDetails.FirstName + " " + data.UserDetails.MiddleName + " " + data.UserDetails.LastName);
+            $('#company').html(data.ClientAlias);
+            $('#phoneno').html(data.PhoneNo);
+            $('#role').html(data.RoleDesc);
+            $('#sex').html(data.Sex);
+            $('#username').html(data.UserName);
+            $('#email').html(data.Email);
+            if (data.IsUserActive == 1) { status = "Active"; }
+            else { status = "Inactive"; }
+            $('#status').html(status);
+
+           
+        })
+        //closeProgressIndicator();
+        $("#userdetails").modal('show');
+
+
+        }
+
+
+
+
+
+    $("#details").click(function () {
+
+        alert("Good");
+    });
+
+
+</script>

@@ -1,0 +1,198 @@
+﻿@{
+    DolphinService.Response.ClientResponse Model_Client = ViewBag.Client;
+
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+
+
+<div class="row">
+ 
+    <div class="col-md-12 d-flex align-items-stretch grid-margin">
+      
+        <div class="row flex-grow">
+      
+
+            @{if (!String.IsNullOrEmpty(@ViewBag.ErrorMsg))
+                {
+                    <div class="alert alert-danger" role="alert" style="margin:auto;width:100%;">
+                        @ViewBag.ErrorMsg
+                        <button type="button" class="close" data-dismiss="alert" aria-hidden="true">&times;</button>
+                    </div>
+                }
+             
+            }
+
+            <div class="col-12 stretch-card">
+                <div class="card">
+                    <div class="card-body">
+                        <h4 class="card-title">@ViewBag.Message</h4>
+                        <p class="card-description">
+
+                        </p>
+
+                        <form class="forms-sample" method="post" action="" id="validate-form" enctype="multipart/form-data">
+
+                            <div class="row">
+                                <div class="col-md-6">
+                                    <div class="form-group row">
+                                        <label class="col-sm-3 col-form-label">Title</label>
+                                        <div class="col-sm-9">
+                                            <input type="text" class="form-control" name="ClientName" value="@((Model_Client != null) ? Model_Client.ClientDetails.FirstOrDefault().ClientName : string.Empty)" />
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="col-md-6">
+                                    <div class="form-group row">
+                                        <label class="col-sm-3 col-form-label">Alias</label>
+                                        <div class="col-sm-9">
+                                            <input type="text" class="form-control" name="ClientAlias"  value="@((Model_Client != null) ? Model_Client.ClientDetails.FirstOrDefault().ClientAlias : string.Empty)" />
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <p class="card-description">
+
+                                <b>Lagos</b>
+                            </p>
+                            <div class="row">
+                                <div class="col-md-6">
+                                    <div class="form-group row">
+                                        <label class="col-sm-3 col-form-label">Response Time</label>
+                                        <div class="col-sm-9">
+                                            <select class="form-control" name="RespTimeIn" required>
+                                                <option value=@(Model_Client.ClientDetails.FirstOrDefault().RespTimeIn)>@(Model_Client.ClientDetails.FirstOrDefault().RespTimeIn)</option>
+                                                @{
+                                                    for (int i = 1; i < 10; i++)
+                                                    {
+                                                        <option value=@i> @i</option>
+                                                    }
+                                                }
+
+                                            </select>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="col-md-6">
+                                    <div class="form-group row">
+                                        <label class="col-sm-3 col-form-label">Resolution Time (Hour)</label>
+                                        <div class="col-sm-9">
+                                            <select class="form-control" name="RestTimeIn" required>
+                                                <option value=@(Model_Client.ClientDetails.FirstOrDefault().RestTimeIn)>@(Model_Client.ClientDetails.FirstOrDefault().RestTimeIn)</option>
+                                                @{
+                                                    for (int i = 1; i < 48; i++)
+                                                    {
+                                                        <option value=@i>@i</option>
+                                                    }
+                                                }
+
+                                            </select>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <p class="card-description">
+
+                                <b>UpCountry</b>
+                            </p>
+                            <div class="row">
+                                <div class="col-md-6">
+                                    <div class="form-group row">
+                                        <label class="col-sm-3 col-form-label">Response Time</label>
+                                        <div class="col-sm-9">
+                                            <select class="form-control" name="RespTimeOut" required>
+                                                <option value=@(Model_Client.ClientDetails.FirstOrDefault().RespTimeOut)>@(Model_Client.ClientDetails.FirstOrDefault().RespTimeOut)</option>
+                                                @{
+                                                    for (int i = 1; i < 10; i++)
+                                                    {
+                                                        <option value=@i> @i</option>
+                                                    }
+                                                }
+
+                                            </select>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="col-md-6">
+                                    <div class="form-group row">
+                                        <label class="col-sm-3 col-form-label">Resolution Time (Hour)</label>
+                                        <div class="col-sm-9">
+                                            <select class="form-control" name="RestTimeOut" required>
+                                                <option value=@(Model_Client.ClientDetails.FirstOrDefault().RestTimeOut)>@(Model_Client.ClientDetails.FirstOrDefault().RestTimeOut)</option>
+                                                @{
+                                                    for (int i = 1; i < 48; i++)
+                                                    {
+                                                        <option value=@i>@i</option>
+                                                    }
+                                                }
+
+                                            </select>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+
+
+                            <div class="row">
+                                <div class="col-md-6">
+                                    <div class="form-group row">
+                                        <label class="col-sm-3 col-form-label">Banner</label>
+                                        <div class="col-sm-9">
+                                            <input type="file" name="BannerFile" class="file-upload-default">
+                                            <div class="input-group col-xs-12">
+                                                <input type="text" class="form-control file-upload-info" disabled placeholder="Upload Image">
+                                                <span class="input-group-append">
+                                                    <button class="file-upload-browse btn btn-info" type="button">Upload</button>
+                                                </span>
+                                            </div>
+                                            
+                                        </div>
+                                    </div>
+                                    <input type="text" class="form-control" name="ClientBanner" value="@((Model_Client != null) ? Model_Client.ClientDetails.FirstOrDefault().ClientBanner : string.Empty)" style="display: none;">
+                                </div>
+                                <div class="col-md-6">
+                                    <div class="form-group row">
+                                        <label class="col-sm-3 col-form-label">Is Client Active</label>
+                                        <div class="col-sm-4">
+
+                                        </div>
+                                        <div class="col-sm-5">
+                                            <div class="form-check form-check-flat">
+                                                <label class="form-check-label">
+                                                    <input type="checkbox" class="form-check-input" Value="true" name="IsClientActive">
+
+                                                </label>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="row">
+
+                                <div class="col-md-6">
+                                    <div class="form-group row">
+
+                                    </div>
+                                </div>
+
+                                <div class="col-md-6">
+                                    <div class="form-group row">
+                                        <div class="col-sm-2">
+
+                                        </div>
+                                        <div class="col-sm-7 pull-right">                              
+                                            <button type="submit" class="btn btn-primary mr-2"><i class="mdi mdi-cloud-download"></i>Update </button>
+                                            <button class="btn btn-light" type="reset"><i class="mdi mdi-refresh"></i>Cancel</button>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+
+
+                        </form>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
